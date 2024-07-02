@@ -38,6 +38,16 @@ function makeSound(key)
             break;
       }
     }
+
+
+function clickAnimation(key){
+    var activeButton = document.querySelector("." + key);
+    activeButton.classList.add("pressed");
+    setTimeout(  function(){
+        activeButton.classList.remove("pressed");}
+        ,100);
+    }
+
 var numberOfButtons = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i < numberOfButtons; i ++)
@@ -46,11 +56,14 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function ()
 {
  var buttonInnerHTML = this.innerHTML;
  makeSound(buttonInnerHTML);
+ clickAnimation(buttonInnerHTML);
 });
     }
 
 document.addEventListener("keydown", function(event){
     makeSound(event.key);
+    clickAnimation(event.key);
+
 }
 );
 
